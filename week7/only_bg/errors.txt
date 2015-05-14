@@ -1,0 +1,155 @@
+URL: http://www.pravoslavieto.bg/
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 516, in urlopen
+    body=body, headers=headers)
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 308, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "/usr/lib/python3.4/http/client.py", line 1088, in request
+    self._send_request(method, url, body, headers)
+  File "/usr/lib/python3.4/http/client.py", line 1126, in _send_request
+    self.endheaders(body)
+  File "/usr/lib/python3.4/http/client.py", line 1084, in endheaders
+    self._send_output(message_body)
+  File "/usr/lib/python3.4/http/client.py", line 922, in _send_output
+    self.send(msg)
+  File "/usr/lib/python3.4/http/client.py", line 857, in send
+    self.connect()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 154, in connect
+    conn = self._new_conn()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 133, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 64, in create_connection
+    for res in socket.getaddrinfo(host, port, 0, socket.SOCK_STREAM):
+  File "/usr/lib/python3.4/socket.py", line 533, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno -2] Не е известно името на услугата
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 362, in send
+    timeout=timeout
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 559, in urlopen
+    _pool=self, _stacktrace=stacktrace)
+  File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 245, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "/usr/lib/python3/dist-packages/six.py", line 658, in reraise
+    raise value.with_traceback(tb)
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 516, in urlopen
+    body=body, headers=headers)
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 308, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "/usr/lib/python3.4/http/client.py", line 1088, in request
+    self._send_request(method, url, body, headers)
+  File "/usr/lib/python3.4/http/client.py", line 1126, in _send_request
+    self.endheaders(body)
+  File "/usr/lib/python3.4/http/client.py", line 1084, in endheaders
+    self._send_output(message_body)
+  File "/usr/lib/python3.4/http/client.py", line 922, in _send_output
+    self.send(msg)
+  File "/usr/lib/python3.4/http/client.py", line 857, in send
+    self.connect()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 154, in connect
+    conn = self._new_conn()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 133, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 64, in create_connection
+    for res in socket.getaddrinfo(host, port, 0, socket.SOCK_STREAM):
+  File "/usr/lib/python3.4/socket.py", line 533, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+urllib3.exceptions.ProtocolError: ('Connection aborted.', gaierror(-2, 'Не е известно името на услугата'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "server.py", line 48, in __scan_web_servers
+    headers=USER_AGENT, allow_redirects=True)
+  File "/usr/lib/python3/dist-packages/requests/api.py", line 82, in head
+    return request('head', url, **kwargs)
+  File "/usr/lib/python3/dist-packages/requests/api.py", line 49, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 457, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 569, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 407, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', gaierror(-2, 'Не е известно името на услугата'))
+
+URL: http://www.calend.bg/
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 516, in urlopen
+    body=body, headers=headers)
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 308, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "/usr/lib/python3.4/http/client.py", line 1088, in request
+    self._send_request(method, url, body, headers)
+  File "/usr/lib/python3.4/http/client.py", line 1126, in _send_request
+    self.endheaders(body)
+  File "/usr/lib/python3.4/http/client.py", line 1084, in endheaders
+    self._send_output(message_body)
+  File "/usr/lib/python3.4/http/client.py", line 922, in _send_output
+    self.send(msg)
+  File "/usr/lib/python3.4/http/client.py", line 857, in send
+    self.connect()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 154, in connect
+    conn = self._new_conn()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 133, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 64, in create_connection
+    for res in socket.getaddrinfo(host, port, 0, socket.SOCK_STREAM):
+  File "/usr/lib/python3.4/socket.py", line 533, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno -2] Не е известно името на услугата
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 362, in send
+    timeout=timeout
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 559, in urlopen
+    _pool=self, _stacktrace=stacktrace)
+  File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 245, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "/usr/lib/python3/dist-packages/six.py", line 658, in reraise
+    raise value.with_traceback(tb)
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 516, in urlopen
+    body=body, headers=headers)
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 308, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "/usr/lib/python3.4/http/client.py", line 1088, in request
+    self._send_request(method, url, body, headers)
+  File "/usr/lib/python3.4/http/client.py", line 1126, in _send_request
+    self.endheaders(body)
+  File "/usr/lib/python3.4/http/client.py", line 1084, in endheaders
+    self._send_output(message_body)
+  File "/usr/lib/python3.4/http/client.py", line 922, in _send_output
+    self.send(msg)
+  File "/usr/lib/python3.4/http/client.py", line 857, in send
+    self.connect()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 154, in connect
+    conn = self._new_conn()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 133, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 64, in create_connection
+    for res in socket.getaddrinfo(host, port, 0, socket.SOCK_STREAM):
+  File "/usr/lib/python3.4/socket.py", line 533, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+urllib3.exceptions.ProtocolError: ('Connection aborted.', gaierror(-2, 'Не е известно името на услугата'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "server.py", line 48, in __scan_web_servers
+    headers=USER_AGENT, allow_redirects=True)
+  File "/usr/lib/python3/dist-packages/requests/api.py", line 82, in head
+    return request('head', url, **kwargs)
+  File "/usr/lib/python3/dist-packages/requests/api.py", line 49, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 457, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 569, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 407, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', gaierror(-2, 'Не е известно името на услугата'))

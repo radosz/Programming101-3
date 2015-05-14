@@ -1,0 +1,2 @@
+mutagen==1.28
+tabulate==0.7.5

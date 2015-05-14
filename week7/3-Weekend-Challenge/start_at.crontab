@@ -1,0 +1,1 @@
+30 12 * * * env DISPLAY=:0 /home/rado_sz/Programming101-3/week7/3-Weekend-Challenge/task.sh
