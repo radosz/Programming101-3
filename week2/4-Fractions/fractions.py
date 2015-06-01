@@ -51,10 +51,15 @@ class Fraction:
         if result[0] == result[0] and result[1] == b[1]:
             return int(a[0] / a[1] + b[0] / b[1])
         return Fraction(result[0], result[1])
-if __name__ == '__main__':
-    a = Fraction(2, 4)
-    b = Fraction(2, 1)
+
+
+def main():
+    a = Fraction(1, 2)
+    b = Fraction(2, 4)
     print(a == b)  # True
     print(a + b)  # 1
     print(a - b)  # 0
     print(a * b)  # 1 / 4'''
+
+if __name__ == '__main__':
+    main()
