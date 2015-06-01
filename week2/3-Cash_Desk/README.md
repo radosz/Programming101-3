@@ -1,25 +1,29 @@
-The Cash Desk Problem
+# The Cash Desk Problem
+
 We are going to train our OOP skill by implementing a few classes, which will represent a cash desk.
 
 The cash desk will do the following things:
 
-Take money as single bills
-Take money as batches (пачки!)
-Keep a total count
-Tell us some information about the bills it has
-The Bill class
+* Take money as single bills
+* Take money as batches (пачки!)
+* Keep a total count
+* Tell us some information about the bills it has
 
-Create a class, called Bill which takes one parameter to its constructor - the amount of the bill - an integer.
+## The Bill class
 
-This class will only have dunders so you wont be afraid of them anymore!
+Create a class, called `Bill` which takes one parameter to its constructor - the `amount` of the bill - an integer.
+
+This class will only have **dunders** so you wont be afraid of them anymore!
 
 The class should implement:
 
-__str__ and __repr__
-__int__
-__eq__ and __hash__
+* `__str__` and `__repr__`
+* `__int__`
+* `__eq__` and `__hash__`
+
 Here is an example usage:
 
+```python
 from cashdesk import Bill
 
 a = Bill(10)
@@ -41,20 +45,25 @@ if c in money_holder:
     money_holder[c] += 1
 
 print(money_holder) # { "A 10$ bill": 2 }
-The BatchBill class
+```
 
-We are going to implement a class, which represents more than one bill. A BatchBill!
 
-The class takes a list of Bills as the single constructor argument.
+## The BatchBill class
+
+We are going to implement a class, which represents more than one bill. A `BatchBill`!
+
+The class takes a list of `Bills` as the single constructor argument.
 
 The class should have the following methods:
 
-__len__(self) - returns the number of Bills in the batch
-total(self) - returns the total amount of all Bills in the batch
-We should be able to iterate the BatchBill class with a for-loop.
+* `__len__(self)` - returns the number of `Bills` in the batch
+* `total(self)` - returns the total amount of all `Bills` in the batch
+
+We should be able to iterate the `BatchBill` class with a for-loop.
 
 Here is an example:
 
+```python
 from cashdesk import Bill, BillBatch
 
 values = [10, 20, 50, 100]
@@ -69,19 +78,26 @@ for bill in batch:
 # A 20$ bill
 # A 50$ bill
 # A 100$ bill
+```
+
 In order to do that, you need to implement the following method:
 
+```python
 def __getitem__(self, index):
     pass
-The CashDesk classs
+```
 
-Finally, implement a CashDesk class, which has the following methods:
+## The CashDesk classs
 
-take_money(money), where money can be either Bill or BatchBill class
-total() - returns the total amount of money currenly in the desk
-inspect() - prints a table representation of the money - for each bill, how many copies of it we have.
+Finally, implement a `CashDesk` class, which has the following methods:
+
+* `take_money(money)`, where `money` can be either `Bill` or `BatchBill` class
+* `total()` - returns the total amount of money currenly in the desk
+* `inspect()` - prints a table representation of the money - for each bill, how many copies of it we have.
+
 For example:
 
+```python
 from cashdesk import Bill, BillBatch, CashDesk
 
 values = [10, 20, 50, 100, 100, 100]
@@ -103,3 +119,5 @@ desk.inspect()
 # 20$ bills - 1
 # 50$ bills - 1
 # 100$ bills - 3
+
+```
