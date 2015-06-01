@@ -8,9 +8,9 @@ def main():
     file_o2 = open(file_two, "r")
     content = file_o.read()
     content_2 = file_o2.read()
-    print(content + "\n\n")
-    print(content_2)
+    print(content+content_2)
     file_o.close()
+    file_o2.close()
 
 if __name__ == '__main__':
     main()
