@@ -1,7 +1,6 @@
 from validate_email import validate_email
 from BFS_level import connection_level as bfs_l
-from copy import deepcopy
-import json
+import pickle
 
 
 class Panda:
@@ -10,12 +9,6 @@ class Panda:
         self.__name = name
         self.__mail = mail
         self.__gender = gender
-
-    def json_panda_repr(self):
-        name = '"name":"{}"'.format(self.__name)
-        mail = '"mail": "{}"'.format(self.__mail)
-        gender = '"gender":"{}"'.format(self.__gender)
-        return "{{\n {},\n{},\n{} \n}}".format(name, gender, mail)
 
     def getGender(self):
         return self.__gender
@@ -50,22 +43,23 @@ class Panda:
         return(hash(hash_str))
 
     def __str__(self):
-        return self.__name
+        return self.name()
 
     def __repr__(self):
-        return self.json_panda_repr()
+        return self.__str__()
 
 
 class PandaSocialNetwork:
 
     def __init__(self):
         self.network = {}
-        #self.exc = Errors("PandaAlreadyThere","Panda alredy there")
 
-# TODO : Add error messages
+    def __str__(self):
+        return str(self.network)
+
     def add_panda(self, panda):
-        # if panda in self.pandas :
-            #raise PandaAlreadyThere
+        if panda in self.network:
+            raise PandaAlreadyThere
         self.network[panda] = []
 
     def has_panda(self, panda):
@@ -79,8 +73,10 @@ class PandaSocialNetwork:
         if not self.has_panda(panda2):
             self.add_panda(panda2)
 
+        if self.are_friends(panda1, panda2):
+            raise PandasAlreadyFriend
+
         self.network[panda1].append(panda2)
-        # TODO : Raise PandasAlreadyFriend
 
     def are_friends(self, panda1, panda2):
         return panda2 in self.network[panda1]
@@ -113,37 +109,31 @@ class PandaSocialNetwork:
                 all_pandas += [x for x in self.network[pnd] if x != panda]
             end_level += 1
             level -= 1
-
-        # TODO: Make level exception for this case
-        if start_level != end_level + 1:
-            raise Exception("Level exception")
+        if start_level > end_level+1:
+            raise LevelException
 
         return self.panda_genders(set(all_pandas), gender)
 
-    def __str__(self):
-        return str(self.network)
+    def save(self, filename="PandaNetwork.bin"):
+        with open(filename, "wb") as sc:
+            pickle.dump(self, sc)
+        sc.close()
 
-    def pandas_to_json(self):
-        result = []
-        for k, v in self.network.items():
-            result.append(
-                "{} : {}".format(k.json_panda_repr(), v))
-        return ",".join(result)
-
-    def save(self):
-        pass
-
-    def load(self):
-        pass
+    @staticmethod
+    def load(filename="PandaNetwork.bin"):
+        with open(filename, "rb") as sc:
+            pandas_network = pickle.load(sc)
+        sc.close()
+        return pandas_network
 
 
-# TODO : write  this later
-class Errors(Exception):
+class LevelException(Exception):
+    pass
 
-    def __init__(self, message, errors):
 
-        # Call the base class constructor with the parameters it needs
-        super(ValidationError, self).__init__(message)
+class PandasAlreadyFriend(Exception):
+    pass
 
-        # Now for your custom code...
-        self.errors = errors
+
+class PandaAlreadyThere(Exception):
+    pass
