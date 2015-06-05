@@ -23,23 +23,34 @@ SELECT * FROM ServerInfo
 search_query = """
 SELECT * FROM ServerInfo WHERE server like "%{}%";
 """
+soup_url_query = """SELECT url
+FROM soup"""
 
 
 class Database():
 
-    def __init__(self, db_name):
+    def __init__(self, db_name="bg_servers.db"):
         self.conn = sqlite3.connect(db_name)
         self.conn.row_factory = sqlite3.Row
         self.cursor = self.conn.cursor()
         self.cursor.execute(create_table_servers)
         self.all_s = self.cursor.execute(select_query)
 
+    def soup_url(self):
+        urls = []
+        q = self.cursor.execute(soup_url_query)
+        for row in q:
+            urls.append(row["url"])
+        return urls
+
     def create_table_soup(self):
         self.cursor.execute(create_table_soup)
 
-    def insert_into_soup(self, link):
+    def insert_into_soup(self, links):
         try:
-            self.cursor.execute(insert_into_soup.format("url", link))
+            for link in links:
+                print("Save in Database", link)
+                self.cursor.execute(insert_into_soup.format("url", link))
             self.conn.commit()
         except sqlite3.IntegrityError:
             pass
@@ -48,9 +59,11 @@ class Database():
         try:
             a, b = values
             self.cursor.execute(insert_into_query.format("url,server", a, b))
-            self.conn.commit()
         except Exception:
             pass
+
+    def commit(self):
+        self.conn.commit()
 
     def view_all(self):
         r = self.cursor.execute(select_query)

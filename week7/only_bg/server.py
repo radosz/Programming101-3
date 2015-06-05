@@ -1,7 +1,7 @@
 import requests
-import traceback
 import crawl
 import plot_info as plt
+from urllib.parse import urlparse
 from database import Database
 import os
 
@@ -13,6 +13,7 @@ servers_types = ["nginx", "IIS", "Apache", "lighttpd"]
 
 
 def create_histogram(servers):
+    print("his", servers)
     all_count = 0
     count = 0
     his = {}
@@ -23,22 +24,26 @@ def create_histogram(servers):
         his[type_s] = count
         all_count += his[type_s]
         count = 0
-    his['Others'] = int(servers[-1]) - all_count
+    his['Others'] = len(servers) - all_count
     return his
 
 
 class ServersHistogram:
 
-    def __init__(self, urls, limit=9999):
-        self.exc = []
+    def __init__(self, urls, dot=".bg", limit=9999):
+        self.dot = dot
         self.visited = set()
+        self.v_links = set()
+        self.to_db = set()
         self.servers = []
+        crawl.to_his = urls
         self.__his = self.__scan_web_servers(limit)
 
     def get_histogram(self):
         return self.__his
 
     def __scan_web_servers(self, limit):
+        print("Start scan")
         scan_sites = 0
         for link in crawl.to_his:
             try:
@@ -46,17 +51,29 @@ class ServersHistogram:
                     link_url = requests.head(
                         link, timeout=TIMEOUT,
                         headers=USER_AGENT, allow_redirects=True)
-                    self.servers.append(link_url.headers['Server'])
                     self.visited.add(link)
+                    url = urlparse(link_url.url)
+                    u_link = self.get_domain(url)
+                    if self.dot in link_url.url and u_link not in self.v_links:
+                        self.v_links.add(u_link)
+                        self.to_db.add(u_link)
+                        self.servers.append(link_url.headers['Server'])
+                        print(u_link, self.servers[-1])
+                    else:
+                        raise Exception
                     scan_sites += 1
-                self.save_in_db()
             except Exception:
-                self.exc.append(
-                    "URL: " + link + "\n" + traceback.format_exc())
+                pass
             if len(self.servers) == limit:
-                self.servers.append(str(scan_sites))
                 break
+        self.save_in_db()
         return self.histogram()
+
+    # input from urlparse()
+    def get_domain(self, url_p):
+        s_netloc = url_p.netloc.split(".")
+        u_link = url_p.scheme + "://" + s_netloc[-2] + "." + s_netloc[-1]
+        return u_link
 
     @staticmethod
     def load(full_path):
@@ -77,30 +94,8 @@ class ServersHistogram:
         his = create_histogram(servers)
         return his
 
-    @staticmethod
-    def prepare_server_lst(servers):
-        result = []
-        for type_s in servers_types:
-            result += [s.strip() for s in servers if s.find(type_s) > -1]
-        n = str(len(servers))
-        result.append(n)
-        return result
-
-    def save_to_file(self):
-        spaces = max([len(str(x)) for x in self.servers]) + 5
-        to_str = "\n".join([str(s + " " * (spaces - len(s)) + v)
-                            for v, s in zip(self.visited, self.servers)])
-        with open("stats.txt", "w") as s_file:
-            s_file.write(to_str)
-            s_file.write("\n" + self.servers[-1])
-            s_file.close()
-        with open("errors.txt", "w") as err:
-            err.write("\n".join(self.exc))
-            err.close()
-
     def histogram(self):
-        servers = ServersHistogram.prepare_server_lst(self.servers)
-        return create_histogram(servers)
+        return create_histogram(self.servers)
 
     @staticmethod
     def print_stats(hist, bar_color=plt.color_bar, text_color=plt.color_text, width=plt.width):
@@ -115,8 +110,9 @@ class ServersHistogram:
 
     def save_in_db(self):
         db = Database()
-        for v, s in zip(self.visited, self.servers):
+        for v, s in zip(self.to_db, self.servers):
             db.insert((v, s))
+        db.commit()
         db.close_db()
 
     @staticmethod
@@ -124,26 +120,27 @@ class ServersHistogram:
         db = Database()
         servers = db.create_server_list_all()
         crawl.urls = db.create_url_list_all()
-        servers = ServersHistogram.prepare_server_lst(servers)
         return create_histogram(servers)
 
 
 def main():
 
-    load_his = ServersHistogram.load_db()
-    ServersHistogram.print_stats(load_his)
+#    load_his = ServersHistogram.load_db()
+#    ServersHistogram.print_stats(load_his)
 
-    try:
+    db = Database()
+    db.create_table_soup()
+    urls = db.soup_url()
+
+    if len(urls) < 1:
         craw = crawl.WebCrawling("http://start.bg")
-        craw.crawling(2000)
-    except Exception:
-        print(crawl.to_his)
-        pass
+        craw.crawling()
+        sh = ServersHistogram(crawl.to_his)
+    else:
+        sh = ServersHistogram(urls)
 
-    sh = ServersHistogram(crawl.to_his)
     his = sh.get_histogram()
     ServersHistogram.save_fig(his)
-    sh.save_to_file()
 
 
 if __name__ == '__main__':

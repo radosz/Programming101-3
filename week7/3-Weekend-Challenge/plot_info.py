@@ -4,6 +4,8 @@ import matplotlib.pyplot as plt
 width = 0.6
 color_bar = 'palegreen'
 color_text = 'red'
+title = "*.bg server"
+y_label = "Count"
 
 
 def sort_histogram(histogram):
@@ -29,8 +31,8 @@ def histogram_to_plot(histogram):
     axes.set_ylim([0, max_value])
 
     # add some text for labels, title and axes ticks
-    ax.set_ylabel('Count')
-    ax.set_title('Servers')
+    ax.set_ylabel(y_label)
+    ax.set_title(title)
     ax.set_xticks(ind + width)
     ax.set_xticklabels(keys)  # Servers  names
     ax = autolabel(rect, ax)

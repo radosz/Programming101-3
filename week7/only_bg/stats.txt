@@ -1,9 +1,0 @@
-Apache                     http://www.liternet.bg/
-Apache                     http://www.kabbalah.bg/
-Apache                     http://www.kak-da.bg/
-nginx/0.7.65               http://www.ibox.bg/
-nginx                      http://www.dnevnik.bg/
-Apache/2.2.15 (CentOS)     http://www.az-jenata.bg/
-Apache/2.2.15 (CentOS)     http://www.dariknews.bg/
-Apache/2.2.15 (CentOS)     http://www.start.bg/
-Apache/2.2.15 (CentOS)
