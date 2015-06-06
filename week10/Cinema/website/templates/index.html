@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1 id="title">Movies</h1>
+    <form action="/" method="POST">
+        {% csrf_token %}
+        <select name = "movielist" onchange="this.form.submit()">>
+            <option> </option>
+            <option value="All"> All Projections </option>
+            {% for movie in movies %}
+            <option value={{ movie.get_name}}>{{ movie.name }}</option>
+            {% endfor %}
+        </select>
+    </form>
+    <form action="/" method="GET">
+    <table class="table table-bordered">
+    	    <thead>
+    		  <tr>
+                <th>Tickets № </>
+    		    <th>Movie</th>
+                <th>Type</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>rating</th>
+    		  </tr>
+    		</thead>
+        {% for pr in projections %}
+            <tr>
+                <td>
+                <select class="span1" name = {{pr.get_movie_name}}_{{pr.id}}>
+                    <option value="None"></option>
+                    {% for number in numbers %}
+                        <option  value={{number}}>{{number}}</option>
+                    {% endfor %}
+                </select>
+                </td>
+                <td>
+                    {{ pr }}
+                </td>
+                <td>
+                    {{ pr.type_field }}
+                </td>
+                <td>
+                    {{ pr.date }}
+                </td>
+                <td>
+                    {{ pr.time }}
+                </td>
+                <td>
+                {% for rate in movies %}
+                  {% if rate.name|stringformat:"s" == pr|stringformat:"s" %}
+                    {{ rate.rating }}
+                  {% endif %} 
+                {% endfor %}
+                </td>
+            </tr>
+        {% endfor %}
+        <table>
+            <div align="right">
+                <button class="btn btn-primary">RESERVE</button>
+            </div>
+        <table>
+    </table>
+    </form>
+
+{% endblock %}
