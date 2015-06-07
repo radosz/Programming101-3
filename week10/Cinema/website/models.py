@@ -51,8 +51,7 @@ class Projection(models.Model):
 class Reservation(models.Model):
     username = models.TextField(blank=True, null=True)
     projection = models.ForeignKey(Projection, blank=True, null=True)
-    row = models.IntegerField(blank=True, null=True)
-    col = models.IntegerField(blank=True, null=True)
+    seat = models.IntegerField(blank=True, null=True)
 
     class Meta:
         db_table = 'Reservations'
