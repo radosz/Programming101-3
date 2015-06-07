@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ImageMapster Beginner 2</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script src="scripts/jquery.imagemapster.js"></script>
+<style>
+#container {
+	width : 100%;
+	margin : auto;
+	}
+#text {
+	width : 60%;
+	float : left;
+	font-family : verdana, arial, sans-serif;
+	font-size : 12pt;
+	margin-top : 20px;
+	margin-left : 20px;
+	}
+#image { float : center; }
+</style>
+</head>
+
+<body>
+<div id="image">
+<img id="cinema" src="images/map.png" alt="cinema" usemap="#cinema">
+ </div>
+</div>
+<script>
+$(document).ready(function ()
+{
+	$('#cinema').mapster({
+	singleSelect : false,
+	render_highlight : { altImage : 'images/map1.png' },
+     mapKey: 'color',
+	fill : true, altImage : 'images/map1.png',
+	fillOpacity : 1,
+     areas : [{key : 'blue', selected : false, altImage : 'images/map1.png'}]
+});
+});
+</script>
+
+<map name="cinema">
+<area shape="rect"	color = "1" coords="205,529,236,561"  href="?seat=1" />
+<area shape="rect"	color = "2" coords="240,521,271,553"  href="?seat=2" />
+<area shape="rect"	color = "3" coords="275,512,302,543"  href="?seat=3" />
+<area shape="rect"	color = "4" coords="310,505,337,536"  href="?seat=4" />
+<area shape="rect"	color = "5" coords="343,506,370,537"  href="?seat=5" />
+<area shape="rect"	color = "6" coords="275,512,302,543"  href="?seat=6" />
+<area shape="rect"	color = "7" coords="376,506,403,537"  href="?seat=7" />
+<area shape="rect"	color = "8" coords="409,504,436,535"  href="?seat=8" />
+<area shape="rect"	color = "9" coords="443,507,470,538"  href="?seat=9" />
+<area shape="rect"	color = "10" coords="477,504,504,535"  href="?seat=10" />
+<area shape="rect"	color = "11" coords="511,512,538,543"  href="?seat=11" />
+<area shape="rect"	color = "12" coords="544,520,571,551"  href="?seat=12" />
+<area shape="rect"	color = "13" coords="580,529,607,560"  href="?seat=13" />
+<area shape="rect"	color = "14" coords="185,482,212,513"  href="?seat=14" />
+<area shape="rect"	color = "15" coords="219,474,246,505"  href="?seat=15" />
+<area shape="rect"	color = "16" coords="254,466,281,497"  href="?seat=16" />
+<area shape="rect"	color = "17" coords="289,458,316,489"  href="?seat=17" />
+<area shape="rect"	color = "18" coords="323,460,350,491"  href="?seat=18" />
+<area shape="rect"	color = "19" coords="356,459,383,490"  href="?seat=19" />
+<area shape="rect"	color = "20" coords="390,459,417,490"  href="?seat=20" />
+<area shape="rect"	color = "21" coords="425,459,452,490"  href="?seat=21" />
+<area shape="rect"	color = "22" coords="458,458,485,489"  href="?seat=22" />
+<area shape="rect"	color = "23" coords="493,459,520,490"  href="?seat=23" />
+<area shape="rect"	color = "24" coords="527,468,554,499"  href="?seat=24" />
+<area shape="rect"	color = "25" coords="561,472,588,503"  href="?seat=25" />
+<area shape="rect"	color = "26" coords="594,483,621,514"  href="?seat=26" />
+<area shape="rect"	color = "27" coords="168,432,195,463"  href="?seat=27" />
+<area shape="rect"	color = "28" coords="204,421,231,452"  href="?seat=28" />
+<area shape="rect"	color = "29" coords="238,416,265,447"  href="?seat=29" />
+<area shape="rect"	color = "30" coords="273,407,300,438"  href="?seat=30" />
+<area shape="rect"	color = "31" coords="307,408,334,439"  href="?seat=31" />
+<area shape="rect"	color = "32" coords="339,407,366,438"  href="?seat=32" />
+<area shape="rect"	color = "33" coords="375,408,402,439"  href="?seat=33" />
+<area shape="rect"	color = "34" coords="409,408,436,439"  href="?seat=34" />
+<area shape="rect"	color = "35" coords="442,408,469,439"  href="?seat=35" />
+<area shape="rect"	color = "36" coords="477,407,504,438"  href="?seat=36" />
+<area shape="rect"	color = "37" coords="512,408,539,439"  href="?seat=37" />
+<area shape="rect"	color = "38" coords="546,414,573,445"  href="?seat=38" />
+<area shape="rect"	color = "39" coords="579,424,606,455"  href="?seat=39" />
+<area shape="rect"	color = "40" coords="613,433,640,464"  href="?seat=40" />
+<area shape="rect"	color = "41" coords="161,375,188,406"  href="?seat=41" />
+<area shape="rect"	color = "42" coords="196,368,223,399"  href="?seat=42" />
+<area shape="rect"	color = "43" coords="231,360,258,391"  href="?seat=43" />
+<area shape="rect"	color = "44" coords="264,355,291,386"  href="?seat=44" />
+<area shape="rect"	color = "45" coords="299,354,326,385"  href="?seat=45" />
+<area shape="rect"	color = "46" coords="334,354,361,385"  href="?seat=46" />
+<area shape="rect"	color = "47" coords="368,353,395,384"  href="?seat=47" />
+<area shape="rect"	color = "48" coords="400,354,427,385"  href="?seat=48" />
+<area shape="rect"	color = "49" coords="434,356,461,387"  href="?seat=49" />
+<area shape="rect"	color = "50" coords="468,354,495,385"  href="?seat=50" />
+<area shape="rect"	color = "51" coords="501,353,528,384"  href="?seat=51" />
+<area shape="rect"	color = "52" coords="536,355,563,386"  href="?seat=52" />
+<area shape="rect"	color = "53" coords="570,361,597,392"  href="?seat=53" />
+<area shape="rect"	color = "54" coords="605,368,632,399"  href="?seat=54" />
+<area shape="rect"	color = "55" coords="638,378,665,409"  href="?seat=55" />
+<area shape="rect"	color = "56" coords="134,325,161,356"  href="?seat=56" />
+<area shape="rect"	color = "57" coords="168,316,195,347"  href="?seat=57" />
+<area shape="rect"	color = "58" coords="202,308,229,339"  href="?seat=58" />
+<area shape="rect"	color = "59" coords="236,300,263,331"  href="?seat=59" />
+<area shape="rect"	color = "60" coords="270,302,297,333"  href="?seat=60" />
+<area shape="rect"	color = "61" coords="304,302,331,333"  href="?seat=61" />
+<area shape="rect"	color = "62" coords="339,304,366,335"  href="?seat=62" />
+<area shape="rect"	color = "63" coords="374,303,401,334"  href="?seat=63" />
+<area shape="rect"	color = "64" coords="406,302,433,333"  href="?seat=64" />
+<area shape="rect"	color = "65" coords="441,303,468,334"  href="?seat=65" />
+<area shape="rect"	color = "66" coords="473,304,500,335"  href="?seat=66" />
+<area shape="rect"	color = "67" coords="508,302,535,333"  href="?seat=67" />
+<area shape="rect"	color = "68" coords="542,303,569,334"  href="?seat=68" />
+<area shape="rect"	color = "69" coords="576,309,603,340"  href="?seat=69" />
+<area shape="rect"	color = "70" coords="610,316,637,347"  href="?seat=70" />
+<area shape="rect"	color = "71" coords="645,325,672,356"  href="?seat=71" />
+<area shape="rect"	color = "72" coords="112,273,139,304"  href="?seat=72" />
+<area shape="rect"	color = "73" coords="147,267,174,298"  href="?seat=73" />
+<area shape="rect"	color = "74" coords="180,257,207,288"  href="?seat=74" />
+<area shape="rect"	color = "75" coords="216,250,243,281"  href="?seat=75" />
+<area shape="rect"	color = "76" coords="249,250,276,281"  href="?seat=76" />
+<area shape="rect"	color = "77" coords="283,250,310,281"  href="?seat=77" />
+<area shape="rect"	color = "78" coords="317,250,344,281"  href="?seat=78" />
+<area shape="rect"	color = "79" coords="351,250,378,281"  href="?seat=79" />
+<area shape="rect"	color = "80" coords="385,251,412,282"  href="?seat=80" />
+<area shape="rect"	color = "81" coords="419,252,446,283"  href="?seat=81" />
+<area shape="rect"	color = "82" coords="454,251,481,282"  href="?seat=82" />
+<area shape="rect"	color = "83" coords="487,250,514,281"  href="?seat=83" />
+<area shape="rect"	color = "84" coords="454,251,481,282"  href="?seat=84" />
+<area shape="rect"	color = "85" coords="521,251,548,282"  href="?seat=85" />
+<area shape="rect"	color = "86" coords="555,250,582,281"  href="?seat=86" />
+<area shape="rect"	color = "87" coords="591,258,618,289"  href="?seat=87" />
+<area shape="rect"	color = "88" coords="623,265,650,296"  href="?seat=88" />
+<area shape="rect"	color = "89" coords="658,273,685,304"  href="?seat=89" />
+<area shape="rect"	color = "90" coords="98,218,125,249"  href="?seat=90" />
+<area shape="rect"	color = "91" coords="132,211,159,242"  href="?seat=91" />
+<area shape="rect"	color = "92" coords="166,202,193,233"  href="?seat=92" />
+<area shape="rect"	color = "93" coords="200,197,227,228"  href="?seat=93" />
+<area shape="rect"	color = "94" coords="234,197,261,228"  href="?seat=94" />
+<area shape="rect"	color = "95" coords="269,196,296,227"  href="?seat=95" />
+<area shape="rect"	color = "96" coords="302,196,329,227"  href="?seat=96" />
+<area shape="rect"	color = "97" coords="335,197,362,228"  href="?seat=97" />
+<area shape="rect"	color = "98" coords="370,196,397,227"  href="?seat=98" />
+<area shape="rect"	color = "99" coords="404,197,431,228"  href="?seat=99" />
+<area shape="rect"	color = "100" coords="438,196,465,227"  href="?seat=100" />
+<area shape="rect"	color = "101" coords="472,197,499,228"  href="?seat=101" />
+<area shape="rect"	color = "102" coords="504,197,531,228"  href="?seat=102" />
+<area shape="rect"	color = "103" coords="537,197,564,228"  href="?seat=103" />
+<area shape="rect"	color = "104" coords="571,197,598,228"  href="?seat=104" />
+<area shape="rect"	color = "105" coords="604,202,631,233"  href="?seat=105" />
+<area shape="rect"	color = "106" coords="637,211,664,242"  href="?seat=106" />
+<area shape="rect"	color = "107" coords="673,220,700,251"  href="?seat=107" />
+<area shape="rect"	color = "108" coords="84,168,111,199"  href="?seat=108" />
+<area shape="rect"	color = "109" coords="118,160,145,191"  href="?seat=109" />
+<area shape="rect"	color = "110" coords="152,151,179,182"  href="?seat=110" />
+<area shape="rect"	color = "111" coords="186,146,213,177"  href="?seat=111" />
+<area shape="rect"	color = "112" coords="222,144,249,175"  href="?seat=112" />
+<area shape="rect"	color = "113" coords="255,144,282,175"  href="?seat=113" />
+<area shape="rect"	color = "114" coords="289,145,316,176"  href="?seat=114" />
+<area shape="rect"	color = "115" coords="322,145,349,176"  href="?seat=115" />
+<area shape="rect"	color = "116" coords="356,145,383,176"  href="?seat=116" />
+<area shape="rect"	color = "117" coords="390,145,417,176"  href="?seat=117" />
+<area shape="rect"	color = "118" coords="424,144,451,175"  href="?seat=118" />
+<area shape="rect"	color = "119" coords="458,144,485,175"  href="?seat=119" />
+<area shape="rect"	color = "120" coords="489,144,516,175"  href="?seat=120" />
+<area shape="rect"	color = "121" coords="524,144,551,175"  href="?seat=121" />
+<area shape="rect"	color = "122" coords="438,196,465,227"  href="?seat=122" />
+<area shape="rect"	color = "123" coords="558,145,585,176"  href="?seat=123" />
+<area shape="rect"	color = "124" coords="592,144,619,175"  href="?seat=124" />
+<area shape="rect"	color = "125" coords="624,151,651,182"  href="?seat=125" />
+<area shape="rect"	color = "126" coords="657,160,684,191"  href="?seat=126" />
+<area shape="rect"	color = "127" coords="691,168,718,199"  href="?seat=127" />
+<area shape="rect"	color = "128" coords="69,111,96,142"  href="?seat=128" />
+<area shape="rect"	color = "129" coords="84,168,111,199"  href="?seat=129" />
+<area shape="rect"	color = "130" coords="105,101,132,132"  href="?seat=130" />
+<area shape="rect"	color = "131" coords="138,92,165,123"  href="?seat=131" />
+<area shape="rect"	color = "132" coords="172,87,199,118"  href="?seat=132" />
+<area shape="rect"	color = "133" coords="206,86,233,117"  href="?seat=133" />
+<area shape="rect"	color = "134" coords="240,85,267,116"  href="?seat=134" />
+<area shape="rect"	color = "135" coords="274,86,301,117"  href="?seat=135" />
+<area shape="rect"	color = "136" coords="308,86,335,117"  href="?seat=136" />
+<area shape="rect"	color = "137" coords="342,84,369,115"  href="?seat=137" />
+<area shape="rect"	color = "138" coords="377,86,404,117"  href="?seat=138" />
+<area shape="rect"	color = "139" coords="410,85,437,116"  href="?seat=139" />
+<area shape="rect"	color = "140" coords="442,85,469,116"  href="?seat=140" />
+<area shape="rect"	color = "141" coords="476,85,503,116"  href="?seat=141" />
+<area shape="rect"	color = "142" coords="509,85,536,116"  href="?seat=142" />
+<area shape="rect"	color = "143" coords="543,86,570,117"  href="?seat=143" />
+<area shape="rect"	color = "144" coords="576,86,603,117"  href="?seat=144" />
+<area shape="rect"	color = "145" coords="609,85,636,116"  href="?seat=145" />
+<area shape="rect"	color = "146" coords="642,92,669,123"  href="?seat=146" />
+<area shape="rect"	color = "147" coords="676,99,703,130"  href="?seat=147" />
+<area shape="rect"	color = "148" coords="711,109,738,140"  href="?seat=148" />
+<area shape="rect"	color = "149" coords="53,55,80,86"  href="?seat=149" />
+<area shape="rect"	color = "150" coords="87,47,114,78"  href="?seat=150" />
+<area shape="rect"	color = "151" coords="121,38,148,69"  href="?seat=151" />
+<area shape="rect"	color = "152" coords="154,32,181,63"  href="?seat=152" />
+<area shape="rect"	color = "153" coords="188,31,215,62"  href="?seat=153" />
+<area shape="rect"	color = "154" coords="223,31,250,62"  href="?seat=154" />
+<area shape="rect"	color = "155" coords="256,31,283,62"  href="?seat=155" />
+<area shape="rect"	color = "156" coords="291,32,318,63"  href="?seat=156" />
+<area shape="rect"	color = "157" coords="323,32,350,63"  href="?seat=157" />
+<area shape="rect"	color = "158" coords="358,30,385,61"  href="?seat=158" />
+<area shape="rect"	color = "159" coords="393,33,420,64"  href="?seat=159" />
+<area shape="rect"	color = "160" coords="427,32,454,63"  href="?seat=160" />
+<area shape="rect"	color = "161" coords="460,34,487,65"  href="?seat=161" />
+<area shape="rect"	color = "162" coords="492,34,519,65"  href="?seat=162" />
+<area shape="rect"	color = "163" coords="525,33,552,64"  href="?seat=163" />
+<area shape="rect"	color = "164" coords="559,33,586,64"  href="?seat=164" />
+<area shape="rect"	color = "165" coords="592,32,619,63"  href="?seat=165" />
+<area shape="rect"	color = "166" coords="626,33,653,64"  href="?seat=166" />
+<area shape="rect"	color = "167" coords="658,38,685,69"  href="?seat=167" />
+<area shape="rect"	color = "168" coords="692,46,719,77"  href="?seat=168" />
+<area shape="rect"	color = "169" coords="726,56,753,87"  href="?seat=169" />
+
+</map>
+</body>
