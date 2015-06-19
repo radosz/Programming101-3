@@ -1,0 +1,13 @@
+ Настройване на навигацията по картата (PanOptions, RotationOptions,
+
+ZoomOptions).
+
+ Реализация на управление на видимостта на слоевете.-https://developers.arcgis.com/java/guide/work-with-graphics.htm
+
+ Реализация на геопространствено търсене (QueryTask) с геометрия по избор -> https://developers.arcgis.com/java/guide/query-the-map.htm
+
+(точка, линия, полигон), идентификация (IdentifyTask) и търсене по атрибут -> https://developers.arcgis.com/java/guide/identify-features-on-the-map.htm
+
+(FindTask). Показване на резултатите по подходящ начин. -> https://developers.arcgis.com/java/guide/find-text-in-the-map.htm
+
+ Реализация на редактиране на обекти – геометрия (Editor) и атрибути.->https://developers.arcgis.com/java/guide/editing.htm
