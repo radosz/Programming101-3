@@ -1,9 +1,11 @@
 import hashlib
 import getpass
 from sql_manager import Manager
+import time
 sm = Manager("bank.db")
 
 WrongPassLimit = 5
+BruteForceProtectSleep = 5000
 
 
 class Pass:
@@ -63,7 +65,7 @@ def main_menu():
                 print("Login failed")
 
             if login_count == WrongPassLimit:
-                raise BruteForceException
+                time.sleep(BruteForceProtectSleep)
 
         elif command == 'help':
             print("login - for logging in!")
@@ -123,5 +125,5 @@ class NotUpperCharException(Exception):
     pass
 
 
-class BruteForceException(Exception):
-    pass
+# class BruteForceException(Exception):
+#     pass

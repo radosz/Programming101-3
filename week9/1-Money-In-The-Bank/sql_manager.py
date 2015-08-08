@@ -1,6 +1,7 @@
 import sqlite3
 from Client import Client
 
+
 class Manager:
 
     def __init__(self, db):

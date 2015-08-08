@@ -109,7 +109,7 @@ class PandaSocialNetwork:
                 all_pandas += [x for x in self.network[pnd] if x != panda]
             end_level += 1
             level -= 1
-        if start_level > end_level+1:
+        if start_level > end_level + 1:
             raise LevelException
 
         return self.panda_genders(set(all_pandas), gender)
