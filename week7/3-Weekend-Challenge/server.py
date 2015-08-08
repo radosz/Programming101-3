@@ -37,6 +37,7 @@ class ServersHistogram:
         self.to_db = set()
         self.servers = []
         crawl.to_his = urls
+        print(limit)
         self.__his = self.__scan_web_servers(limit)
 
     def get_histogram(self):
@@ -125,9 +126,6 @@ class ServersHistogram:
 
 def main():
 
-#    load_his = ServersHistogram.load_db()
-#    ServersHistogram.print_stats(load_his)
-
     db = Database()
     db.create_table_soup()
     urls = db.soup_url()
@@ -137,7 +135,7 @@ def main():
         craw.crawling()
         sh = ServersHistogram(crawl.to_his)
     else:
-        sh = ServersHistogram(urls)
+        sh = ServersHistogram(urls, limit=10)
 
     his = sh.get_histogram()
     ServersHistogram.save_fig(his)
