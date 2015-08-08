@@ -1,0 +1,8 @@
+dec was called at 2015-08-04 16:31:16.058446
+dec was called at 2015-08-04 16:31:33.649788
+dec was called at 2015-08-04 16:33:11.107068
+dec was called and took 3.504753112792969e-05 seconds to complete
+dec was called and took 0 seconds to complete
+dec was called and took 0.0 seconds to complete
+dec was called and took 0.0 seconds to complete
+dec was called and took 3.9577484130859375e-05 seconds to complete

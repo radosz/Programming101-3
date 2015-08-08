@@ -1,0 +1,7 @@
+{
+"from" :"user_me@gmail.com",
+"to" :"user_you@gmail.com",
+"username" : "user_me@gmail.com",
+"password" : "pwd",
+"server" : "smtp.gmail.com:587"
+}
