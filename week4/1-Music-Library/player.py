@@ -1,11 +1,16 @@
 from subprocess import *
 
 
-def play(mp3Path):
-    p = Popen(["mpg123", "-vC", mp3Path], stdin=PIPE,
-              stdout=DEVNULL, stderr=STDOUT)
-    return p
+class Play:
 
+    def __init__(self, path):
+        self.mp3Path = path
+        self.process = None
 
-def stop(process):
-    process.kill()
+    def play(self):
+        p = Popen(["mpg123", "-vC", self.mp3Path], stdin=PIPE,
+                  stdout=PIPE, stderr=PIPE)
+        self.process = p
+
+    def stop(self):
+        self.process.kill()
