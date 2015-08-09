@@ -187,6 +187,7 @@ class MusicCrawler(Playlist):
             super().add_song(
                 Song(artist, title, album, length, id3))
 
+
 class MusicPlayer(MusicCrawler):
 
     def __init__(self, path, shuffle=False, repeat=False):
