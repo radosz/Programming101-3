@@ -65,6 +65,7 @@ class Playlist:
         self.shuffle = shuffle
         self.song_lst = []
         self.__song_index = 0
+        self.last = None
 
     def __str__(self):
         return str(self.ppprint_playlist())
@@ -98,14 +99,20 @@ class Playlist:
             if self.repeat:
                 self.__song_index = 0
                 return self.song_lst[0]
-            pass  # End  of  Playlist
 
     def next_song(self):
         if not self.shuffle:
+            self.last = self.song_lst[self.__song_index]
             self.__song_index += 1
             return self.current_song()
-
         self.__song_index = randint(self.__song_index, len(self.song_lst) - 1)
+        return self.current_song()
+
+    def prev_song(self):
+        try:
+            self.__song_index = self.song_lst.index(self.last)
+        except ValueError:
+            pass
         return self.current_song()
 
     def ppprint_playlist(self):
@@ -180,49 +187,77 @@ class MusicCrawler(Playlist):
             super().add_song(
                 Song(artist, title, album, length, id3))
 
-# TODO : Make keyboard control
-
 
 class MusicPlayer(MusicCrawler):
 
     def __init__(self, path, shuffle=False, repeat=False):
         super().__init__(path, shuffle, repeat)
         self.pls = super().generate_playlist()
-        if not shuffle:
-            self.song = super().current_song()
-        self.song = super().next_song()
-        self.playing = player.play(self.song.path)
+        self.current = super().current_song().path
+        self.mp3 = player.Play(self.current)
+        self.playing = self.mp3.play()
         self.to_scr()
 
     def __repr__(self):
         return super().ppprint_playlist()
 
-    def stop(self):
-        player.stop(self.playing)
+    def previous(self):
+        self.mp3.stop()
+        self.mp3 = player.Play(super().prev_song().path)
+        self.playing = self.mp3.play()
+        self.to_scr()
 
     def next(self):
-        self.stop()
-        self.playing = player.play(super().next_song().path)
+        self.mp3.stop()
+        self.mp3 = player.Play(super().next_song().path)
+        self.playing = self.mp3.play()
         self.to_scr()
 
     def to_scr(self):
         curses.wrapper(self.auto_next)
 
-    def auto_next(self, window):
+    def timer(self, window, elapsed_time):
+        window.refresh()
+        window.addstr(
+            1, 0, "Elapsed Time :" + str(timedelta(seconds=elapsed_time)))
+        time.sleep(1)
 
+    def auto_next(self, window):
+        # no delay for user input
+        window.nodelay(True)
         try:
             window.addstr(0, 0, "Welcome to R.A Player")
             window.addstr(2, 0, super().ppprint_playlist())
         except Exception:
             pass
-
-        window.refresh()
         elapsed_time = 0
-        while elapsed_time < self.song.length:
-            elapsed_time += 1
-            time.sleep(1)
-            window.addstr(
-                1, 0, "Elapsed Time :" + str(timedelta(seconds=elapsed_time)))
-            window.refresh()
-        self.next()
-        return self.auto_next()
+        key = -1
+        window.refresh()
+        stoped = False
+        while True:
+            key = window.getch()
+
+            if key == ord(" ") and not stoped:
+                elapsed_time = 0
+                self.mp3.stop()
+                stoped = True
+                key = window.getch()
+            elif stoped and key == ord(" "):
+                self.current = super().current_song().path
+                self.mp3 = player.Play(self.current)
+                self.playing = self.mp3.play()
+                stoped = False
+            elif key == curses.KEY_RIGHT:
+                stoped = False
+                elapsed_time = 0
+                self.next()
+            elif key == curses.KEY_LEFT:
+                stoped = False
+                elapsed_time = 0
+                self.previous()
+            elif elapsed_time >= super().current_song().length:
+                elapsed_time = 0
+                self.next()
+            elif key == -1 and not stoped:
+                self.timer(window, elapsed_time)
+                elapsed_time += 1
