@@ -65,7 +65,7 @@ class Playlist:
         self.shuffle = shuffle
         self.song_lst = []
         self.__song_index = 0
-        self.last = None
+        self.last = [self.__song_index]
 
     def __str__(self):
         return str(self.ppprint_playlist())
@@ -102,16 +102,17 @@ class Playlist:
 
     def next_song(self):
         if not self.shuffle:
-            self.last = self.song_lst[self.__song_index]
+            self.last.append(self.__song_index)
             self.__song_index += 1
             return self.current_song()
-        self.__song_index = randint(self.__song_index, len(self.song_lst) - 1)
+        self.last.append(self.__song_index)
+        self.__song_index = randint(0, len(self.song_lst) - 1)
         return self.current_song()
 
     def prev_song(self):
         try:
-            self.__song_index = self.song_lst.index(self.last)
-        except ValueError:
+            self.__song_index = self.last.pop()
+        except IndexError:
             pass
         return self.current_song()
 
