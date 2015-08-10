@@ -14,7 +14,7 @@ from django.db import models
 
 class Movie(models.Model):
     rating = models.FloatField(blank=True, null=True)
-     name = models.TextField(blank=True, null=True)
+    name = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return self.name
